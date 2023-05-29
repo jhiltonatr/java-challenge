@@ -6,6 +6,10 @@ Notes have been moved [here](./challenge.md)
 
 ## Project improvements
 
+### JVM version
+As Java 8 is a restriction no upgrade has been done, however just upgradingt the runtime can bring a lot of benefits, such as more effective GC implementations which might impact positively performance.
+
+
 ### Frameworks version
 ✔️ As newer versions of frameworks will have fewer vulnerabilities, performance improvements and more features to profit from. Keeping up-to-date becomes important !
 

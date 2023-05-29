@@ -7,9 +7,9 @@ Notes have been moved [here](./challenge.md)
 ## Project improvements
 
 ### Frameworks version
-:check: As newer versions of frameworks will have fewer vulnerabilities, performance improvements and more features to profit from. Keeping up-to-date becomes important !
+✔️ As newer versions of frameworks will have fewer vulnerabilities, performance improvements and more features to profit from. Keeping up-to-date becomes important !
 
-:info: As the usage of Java 8 is a **restriction**, The following versions will be the latest version supporting this Java version.
+ℹ️ As the usage of Java 8 is a **restriction**, The following versions will be the latest version supporting this Java version.
 
 | Framework  | Before | After                      | Comments                                                         |
 |------------|--------|----------------------------|------------------------------------------------------------------|

@@ -6,8 +6,9 @@ Notes have been moved [here](./challenge.md)
 - `EmployeeController#updateEmployee` method will update the employee with id equal to the `employeeId` path variable. Contrary to the original implementation that prefers the id inside the JSON body.
   - This is done in order to avoid inconsistencies when a request uses different values between the path variable and the JSON body.
   - A different approach could be to reject the request altogether, but for simplicity I decided to still accept the request.
-- Cache is not implemented as the use cases, amount of data, RPS are not very clear
-  - It could be implemented to show how to approach it, but I have decided to approach the project in a "what would I consider in real-world" viewpoint rather than theoretical exercise.
+  - Other alternative is to move such decisions making into the Service layer, but since I considered this as Request control flow and not Business Logic I decided to leave it in the Controller layer.
+- Cache is not implemented as the use cases, amount of data, RPS are not clear
+  - It could be implemented to show how to do it, but I have decided to approach the project in a "what would I consider in the real-world" standpoint rather than just a theoretical exercise.
   - Early optimization can lead to costly operations, and added complexity without real benefits.
   - If required it would be implemented at `Repository` level, allowing deletions to evict records from the cache. 
 
@@ -69,3 +70,12 @@ Unit tests created for the following classes
   - Employee salary must not be a negative number
   - Every employee belongs to 1 department
   - Every employee must have a name
+
+---
+## Personal
+
+- [x] I have more than 10 years experience in Java, from which 7 years have been with version 8 or later
+- [x] I have been working in Springboot related projects the last 5-6 years
+- [x] I have used several features of Spring, such as Spring Security, Spring Data, JmsListener, etc. in order to cover different types of requirements
+- [x] I have experience with code review process, SonarQube, and other auxiliary tools and practices that helps maintain a good codebase quality
+- [x] I am a person that focuses a lot in code quality, best practices and I like being proactive in proposing possible improvements that helps reduce the technical debt, operational support cost, error probability, etc.

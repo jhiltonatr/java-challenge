@@ -28,7 +28,7 @@ As Java 8 is a restriction no upgrade has been done, however just upgradingt the
 #### Unit Test 
 Unit tests created for the following classes
 - EmployeeController
-- EmployeeService
+- EmployeeServiceImpl
 
 ### Code changes
 #### Controller
@@ -37,5 +37,13 @@ Unit tests created for the following classes
 - `saveEmployee` Removed log entry as deemed unnecessary. IF it is required for Observability it could be replaced by proper use of `Logger` instead of `System.out` usage.
 - `deleteEmployee` Removed log entry as deemed unnecessary. IF it is required for Observability it could be replaced by proper use of `Logger` instead of `System.out` usage.
 - `updateEmployee`
-- - Preferred usage of utility function `Objects#nonNull` over `!=` operator.
-- - Prevent discrepancies between `employeeId` path variable and request body. The value in path variable is preferred as the correct value to update.
+  - Preferred usage of utility function `Objects#nonNull` over `!=` operator.
+  - Prevent discrepancies between `employeeId` path variable and request body. The value in path variable is preferred as the correct value to update.
+
+#### Service
+- Removed unnecessary `setEmployeeRepository` method
+- Renamed redundant naming in Service methods. Since the Service is an `EmployeeService` it stands that operation `get`, `save`, etc. are Employee related, hence it is not required to add them in the method name.
+- `getAll` Unify assignation and return statement
+- `getById`
+    - Fix **Bug** `Optional#get` may fail if empty. Using a `null` default value when `Optional` object is empty
+    - Unify assignation and return statement

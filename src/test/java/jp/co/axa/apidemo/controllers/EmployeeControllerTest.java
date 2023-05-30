@@ -30,59 +30,59 @@ public class EmployeeControllerTest {
     @Test
     public void getAllEmployeesShouldDelegateCall() {
         controller.getEmployees();
-        verify(service).retrieveEmployees();
+        verify(service).getAll();
     }
 
     @Test
     public void getEmployeeByIdShouldDelegateCall() {
         final long testEmployeeId = mockedTestEmployee.getId();
         controller.getEmployee(testEmployeeId);
-        verify(service).getEmployee(testEmployeeId);
+        verify(service).getById(testEmployeeId);
     }
 
     @Test
     public void saveEmployeeShouldDelegateCall() {
         final Employee testEmployee = mockedTestEmployee;
         controller.saveEmployee(testEmployee);
-        verify(service).saveEmployee(testEmployee);
+        verify(service).save(testEmployee);
     }
 
     @Test
     public void deleteEmployeeShouldDelegateCall() {
         final long testEmployeeId = mockedTestEmployee.getId();
         controller.deleteEmployee(testEmployeeId);
-        verify(service).deleteEmployee(testEmployeeId);
+        verify(service).delete(testEmployeeId);
     }
 
     @Test
     public void updateEmployeeShouldDelegateCallWhenIdExist() {
         final long testEmployeeId = mockedTestEmployee.getId();
         final Employee testEmployee = mockedTestEmployee;
-        when(service.getEmployee(testEmployeeId)).thenReturn(new Employee());
+        when(service.getById(testEmployeeId)).thenReturn(new Employee());
 
         controller.updateEmployee(testEmployee, testEmployeeId);
-        verify(service).updateEmployee(testEmployee);
+        verify(service).update(testEmployee);
     }
 
     @Test
     public void updateEmployeeShouldNotDelegateCallWhenIdDoesNotExist() {
         final long testEmployeeId = -99;
         final Employee testEmployee = mockedTestEmployee;
-        when(service.getEmployee(testEmployeeId)).thenReturn(null);
+        when(service.getById(testEmployeeId)).thenReturn(null);
 
         controller.updateEmployee(testEmployee, testEmployeeId);
-        verify(service, never()).updateEmployee(testEmployee);
+        verify(service, never()).update(testEmployee);
     }
 
     @Test
     public void updateEmployeeShouldDelegateCallWithFixedIdWhenIdExist() {
         final long testEmployeeId = 2;
         final Employee testEmployee = mockedTestEmployee;
-        when(service.getEmployee(testEmployeeId)).thenReturn(new Employee());
+        when(service.getById(testEmployeeId)).thenReturn(new Employee());
 
         Assertions.assertNotEquals(testEmployeeId, testEmployee.getId());
         controller.updateEmployee(testEmployee, testEmployeeId);
-        verify(service).updateEmployee(testEmployee);
+        verify(service).update(testEmployee);
         Assertions.assertEquals(testEmployeeId, testEmployee.getId());
     }
 }

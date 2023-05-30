@@ -6,37 +6,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    public List<Employee> getAll() {
+        return employeeRepository.findAll();
     }
 
-    public List<Employee> retrieveEmployees() {
-        List<Employee> employees = employeeRepository.findAll();
-        return employees;
+    public Employee getById(Long employeeId) {
+        return employeeRepository.findById(employeeId).orElse(null);
     }
 
-    public Employee getEmployee(Long employeeId) {
-        Optional<Employee> optEmp = employeeRepository.findById(employeeId);
-        return optEmp.get();
-    }
-
-    public void saveEmployee(Employee employee){
+    public void save(Employee employee) {
         employeeRepository.save(employee);
     }
 
-    public void deleteEmployee(Long employeeId){
+    public void delete(Long employeeId) {
         employeeRepository.deleteById(employeeId);
     }
 
-    public void updateEmployee(Employee employee) {
+    public void update(Employee employee) {
         employeeRepository.save(employee);
     }
 }

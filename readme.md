@@ -1,6 +1,7 @@
 ## Original challenge restrictions
 Notes have been moved [here](./challenge.md)
 
+---
 ## Decisions
 - Although I personally prefer Gradle to Maven, due it's high flexibility and performance in big projects, no migration was done as the project is small and straightforward.
 - `EmployeeController#updateEmployee` method will update the employee with id equal to the `employeeId` path variable. Contrary to the original implementation that prefers the id inside the JSON body.
@@ -12,7 +13,7 @@ Notes have been moved [here](./challenge.md)
   - Early optimization can lead to costly operations, and added complexity without real benefits.
   - If required it would be implemented at `Repository` level, allowing deletions to evict records from the cache. 
 
-
+---
 ## Project improvements
 
 ### JVM version
@@ -70,6 +71,18 @@ Unit tests created for the following classes
   - Employee salary must not be a negative number
   - Every employee belongs to 1 department
   - Every employee must have a name
+
+---
+## Other ideas
+Depending on use cases some other changes may come to mind, but were not implemented
+- Change of employee information may require audit information, of who and when data was changed
+  - This change requires some sort of IAM mechanism I prefer not implement due to time restrictions
+- Further database normalization
+  - It can be broken into Employee basic information (id, name, etc), Contract information (start date, end date, salary), Department, etc
+- Cache
+  - As mentioned above, if the API is used frequently a cache mechanism may be desirable. Employees information may not change frequently so caching is definitely a good way to have a better throughput
+  - If the API is used sparsely, caching values for a few minutes will not make a big performance impact, hence it may become an overkill that wastes memory
+- If the API requires high throughput considering web-flux and non-blocking IO (NIO) can also be an option
 
 ---
 ## Personal

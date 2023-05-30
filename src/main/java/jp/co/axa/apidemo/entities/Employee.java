@@ -30,7 +30,7 @@ public class Employee {
     private Integer salary;
 
     @ManyToOne
-    @JoinColumn(name = "EMPLOYEE_DEPARTMENT_ID", insertable = true, updatable = false)
+    @JoinColumn(name = "EMPLOYEE_DEPARTMENT_ID")
     private Department department;
 
 }

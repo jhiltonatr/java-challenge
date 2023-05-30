@@ -21,15 +21,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findById(employeeId).orElse(null);
     }
 
-    public void save(Employee employee) {
-        employeeRepository.save(employee);
+    public Employee save(Employee employee) {
+        return employeeRepository.save(employee);
     }
 
     public void delete(Long employeeId) {
         employeeRepository.deleteById(employeeId);
     }
 
-    public void update(Employee employee) {
-        employeeRepository.save(employee);
+    public Employee update(Employee employee) {
+        return employeeRepository.save(employee);
     }
 }

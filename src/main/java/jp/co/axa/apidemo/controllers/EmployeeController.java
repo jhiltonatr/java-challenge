@@ -26,8 +26,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees")
-    public void saveEmployee(Employee employee) {
-        employeeService.save(employee);
+    public Employee saveEmployee(Employee employee) {
+        return employeeService.save(employee);
     }
 
     @DeleteMapping("/employees/{employeeId}")
@@ -36,15 +36,15 @@ public class EmployeeController {
     }
 
     @PutMapping("/employees/{employeeId}")
-    public void updateEmployee(@RequestBody Employee employee,
+    public Employee updateEmployee(@RequestBody Employee employee,
                                @PathVariable(name = "employeeId") Long employeeId) {
         Employee emp = employeeService.getById(employeeId);
         if (Objects.nonNull(emp)) {
             // Prevent discrepancies between path variable and request body
             employee.setId(employeeId);
-            employeeService.update(employee);
+            return employeeService.update(employee);
         }
-
+        return null;
     }
 
 }

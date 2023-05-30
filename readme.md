@@ -34,11 +34,14 @@ Unit tests created for the following classes
 #### Controller
 - Removed unnecessary `setEmployeeService` method
 - `getEmployees` Unify assignation and return statement
-- `saveEmployee` Removed log entry as deemed unnecessary. IF it is required for Observability it could be replaced by proper use of `Logger` instead of `System.out` usage.
+- `saveEmployee`
+  - Removed log entry as deemed unnecessary. IF it is required for Observability it could be replaced by proper use of `Logger` instead of `System.out` usage.
+  - Adding a new entity should return a copy of the saved data, or at minimum the generated `id` so the entity can be looked up using the `getEmployee` operation.
 - `deleteEmployee` Removed log entry as deemed unnecessary. IF it is required for Observability it could be replaced by proper use of `Logger` instead of `System.out` usage.
 - `updateEmployee`
   - Preferred usage of utility function `Objects#nonNull` over `!=` operator.
   - Prevent discrepancies between `employeeId` path variable and request body. The value in path variable is preferred as the correct value to update.
+  - Updating an entity should return a copy of the saved data.
 
 #### Service
 - Removed unnecessary `setEmployeeRepository` method

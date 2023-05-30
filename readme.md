@@ -4,8 +4,13 @@ Notes have been moved [here](./challenge.md)
 ## Decisions
 - Although I personally prefer Gradle to Maven, due it's high flexibility and performance in big projects, no migration was done as the project is small and straightforward.
 - `EmployeeController#updateEmployee` method will update the employee with id equal to the `employeeId` path variable. Contrary to the original implementation that prefers the id inside the JSON body.
-- - This is done in order to avoid inconsistencies when a request uses different values between the path variable and the JSON body.
-- - A different approach could be to reject the request altogether, but for simplicity I decided to still accept the request.
+  - This is done in order to avoid inconsistencies when a request uses different values between the path variable and the JSON body.
+  - A different approach could be to reject the request altogether, but for simplicity I decided to still accept the request.
+- Cache is not implemented as the use cases, amount of data, RPS are not very clear
+  - It could be implemented to show how to approach it, but I have decided to approach the project in a "what would I consider in real-world" viewpoint rather than theoretical exercise.
+  - Early optimization can lead to costly operations, and added complexity without real benefits.
+  - If required it would be implemented at `Repository` level, allowing deletions to evict records from the cache. 
+
 
 ## Project improvements
 
@@ -50,3 +55,8 @@ Unit tests created for the following classes
 - `getById`
     - Fix **Bug** `Optional#get` may fail if empty. Using a `null` default value when `Optional` object is empty
     - Unify assignation and return statement
+
+#### Security
+- Added Spring Security to secure the API endpoints
+  - Security guided by API KEY strategy (as this is closer to an Auth Token without having an actual IAM system)
+  - The secret security key is configurable in the `application.yml` under the `auth` key.

@@ -1,5 +1,6 @@
 package jp.co.axa.apidemo.controllers;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jp.co.axa.apidemo.entities.Employee;
 import jp.co.axa.apidemo.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,33 +10,34 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/employees")
+@SecurityRequirement(name = "bearer-key")
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/employees")
+    @GetMapping
     public List<Employee> getEmployees() {
         return employeeService.getAll();
     }
 
-    @GetMapping("/employees/{employeeId}")
+    @GetMapping("/{employeeId}")
     public Employee getEmployee(@PathVariable(name = "employeeId") Long employeeId) {
         return employeeService.getById(employeeId);
     }
 
-    @PostMapping("/employees")
-    public Employee saveEmployee(Employee employee) {
+    @PostMapping
+    public Employee saveEmployee(@RequestBody Employee employee) {
         return employeeService.save(employee);
     }
 
-    @DeleteMapping("/employees/{employeeId}")
+    @DeleteMapping("/{employeeId}")
     public void deleteEmployee(@PathVariable(name = "employeeId") Long employeeId) {
         employeeService.delete(employeeId);
     }
 
-    @PutMapping("/employees/{employeeId}")
+    @PutMapping("/{employeeId}")
     public Employee updateEmployee(@RequestBody Employee employee,
                                @PathVariable(name = "employeeId") Long employeeId) {
         Employee emp = employeeService.getById(employeeId);

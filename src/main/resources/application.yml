@@ -1,0 +1,8 @@
+spring:
+  h2:
+    console:
+      enabled: true
+
+auth:
+  token-header-name: Authorization
+  secret-token: my-very-secret-token

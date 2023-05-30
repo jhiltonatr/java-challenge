@@ -6,6 +6,7 @@ import jp.co.axa.apidemo.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +29,7 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public Employee saveEmployee(@RequestBody Employee employee) {
+    public Employee saveEmployee(@Valid @RequestBody Employee employee) {
         return employeeService.save(employee);
     }
 
@@ -38,7 +39,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{employeeId}")
-    public Employee updateEmployee(@RequestBody Employee employee,
+    public Employee updateEmployee(@Valid @RequestBody Employee employee,
                                @PathVariable(name = "employeeId") Long employeeId) {
         Employee emp = employeeService.getById(employeeId);
         if (Objects.nonNull(emp)) {

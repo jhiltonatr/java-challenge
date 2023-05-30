@@ -2,15 +2,13 @@ package jp.co.axa.apidemo.entities;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="EMPLOYEE")
+@Table(name="EMPLOYEES")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -22,12 +20,17 @@ public class Employee {
     private Long id;
 
     @Column(name="EMPLOYEE_NAME")
+    @NotNull
+    @NotBlank
     private String name;
 
     @Column(name="EMPLOYEE_SALARY")
+    @NotNull
+    @Min(0)
     private Integer salary;
 
-    @Column(name="DEPARTMENT")
-    private String department;
+    @ManyToOne
+    @JoinColumn(name = "EMPLOYEE_DEPARTMENT_ID", insertable = true, updatable = false)
+    private Department department;
 
 }

@@ -21,14 +21,17 @@ public class SecurityConfig {
         http
             .csrf().disable()
             .cors().disable()
+            .headers().frameOptions().disable()
+            .and()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeHttpRequests((authorize) ->
                 authorize
                     .antMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                    .antMatchers("/h2-console/**").permitAll()
                     .antMatchers("/api/v1/**").authenticated()
-
+                    .anyRequest().denyAll()
             )
             .addFilter(authFilter);
 

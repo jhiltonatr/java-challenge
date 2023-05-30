@@ -1,5 +1,6 @@
 package jp.co.axa.apidemo.services;
 
+import jp.co.axa.apidemo.entities.Department;
 import jp.co.axa.apidemo.entities.Employee;
 import jp.co.axa.apidemo.repositories.EmployeeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +24,7 @@ class EmployeeServiceImplTest {
 
     @BeforeEach
     public void setup() {
-        mockedTestEmployee = new Employee(1L, "John Doe", 100, "Test Department");
+        mockedTestEmployee = new Employee(1L, "John Doe", 100, new Department());
     }
 
     @Test

@@ -1,5 +1,6 @@
 package jp.co.axa.apidemo.controllers;
 
+import jp.co.axa.apidemo.entities.Department;
 import jp.co.axa.apidemo.entities.Employee;
 import jp.co.axa.apidemo.services.EmployeeService;
 import org.junit.jupiter.api.Assertions;
@@ -24,7 +25,7 @@ public class EmployeeControllerTest {
 
     @BeforeEach
     public void setup() {
-        mockedTestEmployee = new Employee(1L, "John Doe", 100, "Test Department");
+        mockedTestEmployee = new Employee(1L, "John Doe", 100, new Department());
     }
 
     @Test

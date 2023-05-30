@@ -60,3 +60,12 @@ Unit tests created for the following classes
 - Added Spring Security to secure the API endpoints
   - Security guided by API KEY strategy (as this is closer to an Auth Token without having an actual IAM system)
   - The secret security key is configurable in the `application.yml` under the `auth` key.
+
+#### Database
+- Schema normalization.
+  - Department entity separated as many employees may work on the same departments
+  - Basic departments created as "IT", "HR" and "Sales" in `src/main/resources/data.sql` file.
+- Input validation
+  - Employee salary must not be a negative number
+  - Every employee belongs to 1 department
+  - Every employee must have a name

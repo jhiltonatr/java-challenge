@@ -1,0 +1,3 @@
+INSERT INTO DEPARTMENTS(department_name) VALUES ('IT');
+INSERT INTO DEPARTMENTS(department_name) VALUES ('HR');
+INSERT INTO DEPARTMENTS(department_name) VALUES ('Sales');
